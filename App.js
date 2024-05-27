@@ -1,14 +1,39 @@
 import { StyleSheet, Text, View, Image, Button } from 'react-native';
-import TextCustom from './text';
-import Image1 from './image';
-import ButtonCastom from './button';
-
-export default function App() {
+const ButtonCustom =() =>{
   return (
-    <>
-    <TextCustom/>
-    <Image1/>
-    <ButtonCastom/>
-    </>
-  );
+    <View style={{
+      flex: 1,
+      backgroundColor: 'white',
+      justifyContent: 'center',
+      alignContent: 'flex-end',
+      flexDirection: 'row',
+      marginBottom: 100,
+    }}>
+      <Buttoncomponent backgroundColor = 'red' Text='Login'/>
+      <Buttoncomponent backgroundColor = 'red' Text='Register'/>
+    </View>
+  )
 }
+
+const Buttoncomponent = ({backgroundColor,text})=>{
+  return(
+    <View style={{
+      backgroundColor: backgroundColor,
+      width: 150,
+      height: 70,
+      borderRadiius: 10,
+      marginLeft: 10
+    }}>
+      <Text style={{
+                color: 'white',
+                textAlign: 'center',
+                lineHeight: 70,
+                fontSize: 25,
+                fontWeight: 'bold'
+            }}>
+              {text}
+            </Text>
+    </View>
+  )
+}
+export default ButtonCustom;
