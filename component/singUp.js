@@ -1,4 +1,6 @@
-import { StyleSheet, Text, View, Image, Button } from 'react-native';
+import React from 'react';
+import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+
 const SignUp = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -7,6 +9,7 @@ const SignUp = () => {
 
   return (
     <View style={styles.container}>
+    
       <View style={styles.inputView}>
         <TextInput
           style={styles.inputText}
