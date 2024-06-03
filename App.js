@@ -1,103 +1,30 @@
-import { StyleSheet, Text, View, Image, Button } from 'react-native';
-const SignUp = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-
-  return (
-    <View style={styles.container}>
-      <View style={styles.inputView}>
-        <TextInput
-          style={styles.inputText}
-          placeholder="Name"
-          placeholderTextColor="#003f5c"
-          value={name}
-          onChangeText={(text) => setName(text)}
-        />
-      </View>
-      <View style={styles.inputView}>
-        <TextInput
-          style={styles.inputText}
-          placeholder="Email"
-          placeholderTextColor="#003f5c"
-          value={email}
-          onChangeText={(text) => setEmail(text)}
-        />
-      </View>
-      <View style={styles.inputView}>
-        <TextInput
-          style={styles.inputText}
-          placeholder="Password"
-          placeholderTextColor="#003f5c"
-          value={password}
-          onChangeText={(text) => setPassword(text)}
-          secureTextEntry={true}
-        />
-      </View>
-      <View style={styles.inputView}>
-        <TextInput
-          style={styles.inputText}
-          placeholder="Confirm Password"
-          placeholderTextColor="#003f5c"
-          value={confirmPassword}
-          onChangeText={(text) => setConfirmPassword(text)}
-          secureTextEntry={true}
-        />
-      </View>
-      <TouchableOpacity style={styles.signupBtn}>
-        <Text style={styles.signupText}>SIGN UP</Text>
-      </TouchableOpacity>
-      <TouchableOpacity>
-        <Text style={styles.login}>Already have an account? Login</Text>
-      </TouchableOpacity>
+import { StyleSheet,Text,View } from 'react-native'
+import React from 'react'
+import{useFonts} from 'expo-font'
+const App = () => {
+  const [fontsLoaded,fontError] = useFonts({
+    'Metro-Bold':require('./assets/Fonts/Metropolis-Bold.otf'),
+    'Metro-Medium':require('./assets/Fonts/Metropolis-Medium.otf'),
+    'Metro-SemiBold':require('./assets/Fonts/Metropolis-SemiBold.otf'),
+    'Metro-Black':require('./assets/Fonts/Metropolis-Black.otf'),
+  });
+  if (!fontsLoaded) 
+    return <View>
+      <Text> Font tidak ditemukan ! </Text>
     </View>
-  );
-};
+  return(
+    <View style={{
+      flex:1,
+      justifyContent:'center',
+      alignItems:'center',
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#25292e',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  backgroundImage: {
-    width: '100%',
-    height: '100%',
-    resizeMode: 'cover',
-  },
-  inputView: {
-    width: '80%',
-    backgroundColor: 'white',
-    borderRadius: 25,
-    height: 50,
-    marginBottom: 20,
-    justifyContent: 'center',
-    padding: 20,
-  },
-  inputText: {
-    height: 30,
-    color: 'black',
-  },
-  signupBtn: {
-    width: '80%',
-    backgroundColor: '#fb5b5a',
-    borderRadius: 25,
-    height: 50,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 40,
-    marginBottom: 10,
-  },
-  signupText: {
-    color: 'white',
-    fontSize: 18,
-  },
-  login: {
-    color: 'white',
-    fontSize: 16,
-  },
-});
+    }}>
+      <Text style ={{fontFamily:'Metro-Bold',fontSize:30}}> Metro Bold</Text>
+      <Text style ={{fontFamily:'Metro-Medium',fontSize:30}}> Metro Medium</Text>
+      <Text style ={{fontFamily:'Metro-SemiBold',fontSize:30}}> Metro SemiBold</Text>
+      <Text style ={{fontFamily:'Metro-Black',fontSize:30}}> Metro Black</Text>
+    </View>
+  )
+}
 
-export default SignUp;
+export default App
