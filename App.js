@@ -1,30 +1,44 @@
-import { StyleSheet,Text,View } from 'react-native'
-import React from 'react'
-import{useFonts} from 'expo-font'
+import { StyleSheet, Text, View, TextInput, Button } from 'react-native'
+import React, { useState } from 'react'
 const App = () => {
-  const [fontsLoaded,fontError] = useFonts({
-    'Metro-Bold':require('./assets/Fonts/Metropolis-Bold.otf'),
-    'Metro-Medium':require('./assets/Fonts/Metropolis-Medium.otf'),
-    'Metro-SemiBold':require('./assets/Fonts/Metropolis-SemiBold.otf'),
-    'Metro-Black':require('./assets/Fonts/Metropolis-Black.otf'),
-  });
-  if (!fontsLoaded) 
-    return <View>
-      <Text> Font tidak ditemukan ! </Text>
-    </View>
-  return(
-    <View style={{
-      flex:1,
-      justifyContent:'center',
-      alignItems:'center',
-
-    }}>
-      <Text style ={{fontFamily:'Metro-Bold',fontSize:30}}> Metro Bold</Text>
-      <Text style ={{fontFamily:'Metro-Medium',fontSize:30}}> Metro Medium</Text>
-      <Text style ={{fontFamily:'Metro-SemiBold',fontSize:30}}> Metro SemiBold</Text>
-      <Text style ={{fontFamily:'Metro-Black',fontSize:30}}> Metro Black</Text>
+  const [formLogin, setForm] = useState({
+    username: '',
+    email: '',
+    password: ''
+  })
+  const onSubmit = () => {
+    if (formLogin.email === 'unismuh'
+      && formLogin.password === 'unismuh') {
+      alert('Login Berhasil')
+    } else {
+      alert('Login Gagal')
+    }
+  }
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Form Login</Text>
+      <View>
+        <Text>Email</Text>
+        <TextInput
+          style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+          onChangeText={(hasil) => setForm({ ...formLogin, email: hasil })}
+          value={formLogin.email}
+        />
+        <Text>Password</Text>
+        <TextInput
+          style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+          onChangeText={(text) => setForm({ ...formLogin, password: text })}
+          value={formLogin.password}
+        />
+        <View style={{ marginTop: 10 }}>
+          <Button title="Login" onPress={onSubmit} />
+        </View>
+        <View>
+          <Text>Email: {formLogin.email}</Text>
+          <Text>Password: {formLogin.password}</Text>
+        </View>
+      </View>
     </View>
   )
 }
-
 export default App
